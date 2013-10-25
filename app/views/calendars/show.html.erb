@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @calendar.name %>
+</p>
+
+<p>
+  <strong>Caldav collection:</strong>
+  <%= @calendar.caldav_collection_id %>
+</p>
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>
