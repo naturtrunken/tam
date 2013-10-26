@@ -1,5 +1,5 @@
 Tam::Application.routes.draw do
-   root 'calendars#index'
+  root 'statistics#index'
 
   resources :activities
   resources :calendars
