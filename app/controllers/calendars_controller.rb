@@ -53,6 +53,6 @@ class CalendarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def calendar_params
-      params.require(:calendar).permit(:name, :caldav_collection_id)
+      params.require(:calendar).permit(:name, :davical_collection_id)
     end
 end

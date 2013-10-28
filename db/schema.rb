@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025095241) do
+ActiveRecord::Schema.define(version: 20131026144851) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20131025095241) do
 
   create_table "calendars", force: true do |t|
     t.string   "name"
-    t.integer  "caldav_collection_id"
+    t.integer  "davical_collection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

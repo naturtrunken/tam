@@ -9,6 +9,8 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# DB
+gem 'pg'
 
 group :development, :test do
 
@@ -17,7 +19,7 @@ group :development, :test do
 
   # Debugger
   gem 'debugger'
-  #  gem 'binding_of_caller'
+  gem 'binding_of_caller'
 
   # Model annotation
   gem 'annotate'
@@ -49,11 +51,4 @@ group :test do
 
   # Vacuum cleaner for the test database.
   gem 'database_cleaner'
-end
-
-
-group :production do
-
-  # DB
-  gem 'pg'
 end

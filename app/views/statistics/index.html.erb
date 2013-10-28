@@ -1,1 +1,27 @@
-Test
+<table>
+  <thead>
+  <tr>
+    <th>&nbsp;</th>
+    <th>Montag</th>
+    <th>Dienstag</th>
+    <th>Mittwoch</th>
+    <th>Donnerstag</th>
+    <th>Freitag</th>
+    <th>Samstag</th>
+    <th>Sonntag</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% even_row = true %>
+  <% @report.each do |calendar_row| %>
+      <% even_row = !even_row %>
+      <tr class="<%= even_row ? 'even' : 'odd' %>_row">
+        <td class="report_title"><%= calendar_row[0] %></td>
+        <% calendar_row[1].each do |cell| %>
+            <td class="report_cell"><%= cell %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
