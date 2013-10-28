@@ -1,13 +1,9 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:edit, :update, :destroy]
 
   # GET /activities
   def index
     @activities = Activity.all
-  end
-
-  # GET /activities/1
-  def show
   end
 
   # GET /activities/new
@@ -24,7 +20,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
 
     if @activity.save
-      redirect_to @activity, notice: 'Activity was successfully created.'
+      redirect_to activities_url, notice: 'Activity was successfully created.'
     else
       render action: 'new'
     end
@@ -33,7 +29,7 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
-      redirect_to @activity, notice: 'Activity was successfully updated.'
+      redirect_to activities_url, notice: 'Activity was successfully updated.'
     else
       render action: 'edit'
     end

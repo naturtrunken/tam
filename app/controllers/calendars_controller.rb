@@ -1,13 +1,9 @@
 class CalendarsController < ApplicationController
-  before_action :set_calendar, only: [:show, :edit, :update, :destroy]
+  before_action :set_calendar, only: [:edit, :update, :destroy]
 
   # GET /calendars
   def index
     @calendars = Calendar.all
-  end
-
-  # GET /calendars/1
-  def show
   end
 
   # GET /calendars/new
@@ -24,7 +20,7 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.new(calendar_params)
 
     if @calendar.save
-      redirect_to @calendar, notice: 'Calendar was successfully created.'
+      redirect_to calendars_url, notice: 'Calendar was successfully created.'
     else
       render action: 'new'
     end
@@ -33,7 +29,7 @@ class CalendarsController < ApplicationController
   # PATCH/PUT /calendars/1
   def update
     if @calendar.update(calendar_params)
-      redirect_to @calendar, notice: 'Calendar was successfully updated.'
+      redirect_to calendars_url, notice: 'Calendar was successfully updated.'
     else
       render action: 'edit'
     end

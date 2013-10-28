@@ -7,7 +7,6 @@
       <th>Davical collection id</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -16,7 +15,6 @@
       <tr>
         <td><%= calendar.name %></td>
         <td><%= calendar.davical_collection_id %></td>
-        <td><%= link_to 'Show', calendar %></td>
         <td><%= link_to 'Edit', edit_calendar_path(calendar) %></td>
         <td><%= link_to 'Destroy', calendar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
