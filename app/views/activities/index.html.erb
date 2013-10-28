@@ -5,6 +5,7 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Tag</th>
       <th></th>
       <th></th>
     </tr>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= activity.id %></td>
         <td><%= activity.name %></td>
+        <td><%= activity_tag_for(activity) %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
