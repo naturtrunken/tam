@@ -1,9 +1,10 @@
 class StatisticsController < ApplicationController
 
-  def index
-    @report = []
-    @report.push(['Test', [0, 0, 0, 0, 0, 5, 0]])
+  include StatisticsHelper
+  include ActivitiesHelper
 
+  def index
+    @report = report_for_week(2013, 44)
   end
 
 end

@@ -33,4 +33,24 @@ module ActivitiesHelper
     '#' + ret_id[0..ret_id.length-2]
   end
 
+
+  # Given:
+  #  [0] A tag for an activity.
+  #
+  # Returns:
+  #  An activity object for the given tag or nil.
+  #
+  def activity_for_tag(tag)
+    return nil unless tag
+
+    # If the tag has no separator, it represents an activity id.
+    return Activity.where('id = ?', tag).first unless tag.include?('-')
+
+    # The tag contains at least one separator. Get the last id.
+    tag_array = tag.match(/(.*)-(.+)$/)
+    activity_id = tag_array[tag_array.length-1]
+
+    return Activity.where('id = ?', activity_id).first
+  end
+
 end
