@@ -9,6 +9,7 @@
     <th>Freitag</th>
     <th>Samstag</th>
     <th>Sonntag</th>
+    <th>Total</th>
   </tr>
   </thead>
   <tbody>
@@ -18,10 +19,16 @@
       <tr class="<%= even_row ? 'even' : 'odd' %>_row">
         <td class="report_title"><%= calendar_row[0] %></td>
         <% calendar_row[1].each do |cell| %>
-            <td class="report_cell"><%= cell %></td>
+            <td class="report_cell"><%= Time.at(cell).utc.strftime("%H:%M") %></td>
         <% end %>
       </tr>
   <% end %>
+    <tr>
+      <td>&nbsp;</td>
+      <% 0.upto(6) do |i| %>
+        <td><%= Time.at(@statistic_for_days[i]).utc.strftime("%H:%M") %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>
 

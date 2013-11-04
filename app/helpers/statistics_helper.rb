@@ -42,24 +42,22 @@ module StatisticsHelper
                 row_found = true
 
                 # Insert the time
-                report_row[1][current_day_index] = report_row[1][current_day_index] + (calendar_item.dtend - calendar_item.dtstart) / 60
+                report_row[1][current_day_index] = report_row[1][current_day_index] + (calendar_item.dtend - calendar_item.dtstart)
               end
             end
 
             # Did we insert the time?
             unless row_found
               # No. Create a new sub array.
-              new_subarray = [activity.name, [0,0,0,0,0,0,0]]
+              new_subarray = [activity.name, [0,0,0,0,0,0,0,0]]
 
               # Insert the time.
-              new_subarray[1][current_day_index] = new_subarray[1][current_day_index] + (calendar_item.dtend - calendar_item.dtstart) / 60
+              new_subarray[1][current_day_index] = new_subarray[1][current_day_index] + (calendar_item.dtend - calendar_item.dtstart)
 
               # Add the new subarray to the report's array.
               report.push(new_subarray)
             end
 
-          else
-            # No.
           end
 
         end # [3]
@@ -68,7 +66,33 @@ module StatisticsHelper
 
     end # [1]
 
-    return report
+    # Add all durations to the total sum.
+    report.each do |report_row|
+      sum = 0
+
+      0.upto(6) do |i|
+        sum = sum + report_row[1][i]
+      end
+
+      report_row[1][7] = sum
+    end
+
+    report
   end
+
+
+  def statistic_for_report(report)
+    stat = [0,0,0,0,0,0,0]
+
+    # Iterate through all activity rows.
+    report.each do |report_row|
+      0.upto(6) do |i|
+        stat[i] = stat[i] + report_row[1][i]
+      end
+    end
+
+    stat
+  end
+
 
 end
