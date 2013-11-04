@@ -1,3 +1,20 @@
+KW: <%=
+    select_tag(
+            'week',
+            options_for_select(@available_weeks, @current_week),
+            :onchange => 'change_period()',
+            :id => 'week'
+    )
+%>
+Jahr: <%=
+    select_tag(
+            'year',
+            options_for_select(@available_years, @current_year),
+            :onchange => 'change_period()',
+            :id => 'year'
+    )
+%>
+
 <table>
   <thead>
   <tr>
