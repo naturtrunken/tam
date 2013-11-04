@@ -16,6 +16,11 @@
       <br>
       <%= f.text_field :name %>
     </div>
+    <div class="field">
+      <%= f.label :tag %>
+      <br>
+      <%= f.text_field :tag %>
+    </div>
     <% if Activity.all.count > 0 %>
         <div class="field">
           <%= f.label :parent %>

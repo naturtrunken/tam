@@ -16,7 +16,7 @@ module ActivitiesHelper
     while (current_activity)
 
       # Prepend the if of the current activity to the return string.
-      ret_id = current_activity.id.to_s + '-' + ret_id
+      ret_id = current_activity.tag + '-' + ret_id
 
       # Go one stage higher, if there is another parent node.
       if current_activity.parent
@@ -44,13 +44,13 @@ module ActivitiesHelper
     return nil unless tag
 
     # If the tag has no separator, it represents an activity id.
-    return Activity.where('id = ?', tag).first unless tag.include?('-')
+    return Activity.where('tag = ?', tag).first unless tag.include?('-')
 
     # The tag contains at least one separator. Get the last id.
     tag_array = tag.match(/(.*)-(.+)$/)
-    activity_id = tag_array[tag_array.length-1]
+    last_tag = tag_array[tag_array.length-1]
 
-    return Activity.where('id = ?', activity_id).first
+    return Activity.where('tag = ?', last_tag).first
   end
 
 end
